@@ -1,6 +1,6 @@
 package sorting;
 
-public class BubbleSort {
+public class SelectionSort {
     static void printArray(int[] arrlist) {
         for (int i = 0; i < arrlist.length; i++) {
             System.out.print(arrlist[i]);
@@ -11,17 +11,21 @@ public class BubbleSort {
         int[] arr = { 2, 3, 5, 1, 8 };
 
         // Time Complexity = O(n^2)
-        //outer array
+        // outer array
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                int temp = arr[j];
 
-                //Swap
-                if (arr[j] > arr[j + 1]) {
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+            int smallest = arr[i];
+            int swapLocation = i;
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < smallest) {
+                    smallest = arr[j];
+                    swapLocation = j;
                 }
             }
+            int temp = arr[i];
+            arr[i] = smallest;
+            arr[swapLocation] = temp;
 
         }
         printArray(arr);
