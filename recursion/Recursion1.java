@@ -3,7 +3,7 @@ package recursion;
 public class Recursion1 {
     public static void main(String args[]) {
         System.out.println("hello");
-        factorial(100);
+        factorial(5);
 
     }
 
@@ -15,6 +15,8 @@ public class Recursion1 {
 
         System.err.println(n);
         factorial(n - 1);
+        // System.out.println(n);
+        
     }
 
 }
