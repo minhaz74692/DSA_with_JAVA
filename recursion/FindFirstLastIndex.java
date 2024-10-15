@@ -22,6 +22,6 @@ public class FindFirstLastIndex {
 
     public static void main(String args[]) {
         String inp = "Hell s s l sfd";
-        elementIndex(inp, "l".charAt(0), 0);
+        elementIndex(inp, 'l', 0);  // "l" means a String but 'l' means the character
     }
 }
