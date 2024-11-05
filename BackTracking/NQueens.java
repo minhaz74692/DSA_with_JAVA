@@ -5,20 +5,37 @@ import java.util.List;
 
 public class NQueens {
     public static void main(String[] args) {
-        nQueens(4);
+        List<List<String>> result = solveNQueens(4);
+        System.out.println(result);
+        int n = 4;
+        char[][] board = new char[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = '.';
+            }
+        }
+        System.out.println(board);
     }
 
-    public static List<List<String>> nQueens(int n) {
+    public static List<List<String>> solveNQueens(int n) {
         List<List<String>> allBoards = new ArrayList<>();
         char[][] board = new char[n][n];
-        helper(board, allBoards, n);
-        return allBoards;
 
+        // Initialize the board with dots
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = '.';
+            }
+        }
+
+        helper(board, allBoards, 0);
+        return allBoards;
     }
 
     public static void helper(char[][] board, List<List<String>> allBoards, int col) {
         if (col == board.length) {
             saveBoard(board, allBoards);
+            return;
         }
         for (int row = 0; row < board.length; row++) {
             if (isSafe(row, col, board)) {
@@ -30,66 +47,36 @@ public class NQueens {
     }
 
     public static boolean isSafe(int row, int col, char[][] board) {
-        // Horizontal
-        for (int j = 0; j < board.length; j++) {
-            if (board[row][j] == 'Q') {
-                return false;
-            }
-        }
-        // Vertical
-        for (int i = 0; i < board.length; i++) {
-            if (board[i][col] == 'Q') {
+        // Check vertically up
+        for (int i = 0; i < col; i++) {
+            if (board[row][i] == 'Q') {
                 return false;
             }
         }
 
-        // Uper Left
-        int r = row;
-        for (int c = col; c >= 0 && r >= 0; c--, r--) {
-            if (board[r][c] == 'Q') {
+        // Check upper left diagonal
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 'Q') {
                 return false;
             }
         }
 
-        // Uper Right
-        r = row;
-        for (int c = col; c < board.length && r >= 0; c++, r--) {
-            if (board[r][c] == 'Q') {
+        // Check lower left diagonal
+        for (int i = row, j = col; i < board.length && j >= 0; i++, j--) {
+            if (board[i][j] == 'Q') {
                 return false;
             }
         }
-        // Lower Left
-        r = row;
-        for (int c = col; c >= 0 && r < board.length; c--, r++) {
-            if (board[r][c] == 'Q') {
-                return false;
-            }
-        }
-        // Lower Right
-        r = row;
-        for (int c = col; c < board.length && r < board.length; c++, r++) {
-            if (board[r][c] == 'Q') {
-                return false;
-            }
-        }
+
         return true;
     }
 
     public static void saveBoard(char[][] board, List<List<String>> allBoards) {
-        String row = "";
         List<String> newBoard = new ArrayList<>();
-
-        for (int i = 0; i < board[0].length; i++) {
-            row = "";
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 'Q') {
-                    row += 'Q';
-                } else {
-                    row += ".";
-                }
-            }
+        for (int i = 0; i < board.length; i++) {
+            String row = new String(board[i]);
             newBoard.add(row);
         }
-
+        allBoards.add(newBoard);
     }
 }
