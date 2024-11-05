@@ -1,26 +1,27 @@
 package Merge_Sort;
 
+// Time Complexity O(nlogn)
 public class MergeSort1 {
     public static void main(String[] args) {
         int arr[] = { 3, 4, 6, 1, 9, 12, 3 };
         int n = arr.length;
-        divide(arr, 0, n-1);
+        divide(arr, 0, n - 1);
         // print
-        for(int i =0 ; i<n; i++){
-            System.out.print(arr[i]+ " ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
         }
     }
 
     public static void conquer(int arr[], int si, int mid, int ei) {
-        int merged[] = new int[ei-si+1];
-        int idx1 = si; //This index tracking first array
-        int idx2 = mid+1; // This index tracking second array
+        int merged[] = new int[ei - si + 1];
+        int idx1 = si; // This index tracking first array
+        int idx2 = mid + 1; // This index tracking second array
         int x = 0;
 
-        while (idx1<=mid && idx2<=ei) {
-            if(arr[idx1] <= arr[idx2]){
+        while (idx1 <= mid && idx2 <= ei) {
+            if (arr[idx1] <= arr[idx2]) {
                 merged[x++] = arr[idx1++];
-            }else{
+            } else {
                 merged[x++] = arr[idx2++];
             }
         }
@@ -31,11 +32,11 @@ public class MergeSort1 {
         }
 
         // this loop is for merging the existing all element in array 2
-        while (idx2 <=  ei) {
+        while (idx2 <= ei) {
             merged[x++] = arr[idx2++];
         }
 
-        for(int i =0, j = si; i<merged.length; i++, j++){
+        for (int i = 0, j = si; i < merged.length; i++, j++) {
             arr[j] = merged[i];
         }
 
@@ -46,9 +47,9 @@ public class MergeSort1 {
             return;
         }
         int mid = si + (ei - si) / 2;
-        divide(arr, si, mid);
-        divide(arr, mid + 1, ei);
+        divide(arr, si, mid); // Devide first half
+        divide(arr, mid + 1, ei); // Devide Second half
         conquer(arr, si, mid, ei);
     }
-   
+
 }
