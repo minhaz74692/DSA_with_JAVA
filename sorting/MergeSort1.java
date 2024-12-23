@@ -1,4 +1,4 @@
-package Merge_Sort;
+package sorting;
 
 // Time Complexity O(nlogn)
 public class MergeSort1 {
