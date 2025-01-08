@@ -3,6 +3,11 @@ package DSA.LinkedList;
 class LL {
 
     Node head; // Declare the head node
+    int size;
+
+    LL() {
+        this.size = 0;
+    }
 
     public class Node {
         String data;
@@ -11,6 +16,7 @@ class LL {
         Node(String data) {
             this.data = data;
             this.next = null;
+            size++;
         }
     }
 
@@ -44,6 +50,7 @@ class LL {
             System.out.println("The List is Empty to delete");
             return;
         }
+        size--;
         if (head.next == null) {
             head = null;
             return;
@@ -57,6 +64,8 @@ class LL {
             System.out.println("The List is Empty to delete");
             return;
         }
+
+        size--;
         if (head.next == null) {
             head = null;
             return;
@@ -70,6 +79,10 @@ class LL {
             secondLastNode = secondLastNode.next;
         }
         secondLastNode.next = null;
+    }
+
+    public int getSize() {
+       return this.size;
     }
 
     // print
@@ -97,6 +110,8 @@ class LL {
         list.printList();
 
         list.addFirst("This");
+        
+        System.out.println(list.getSize());
 
         list.printList();
 
@@ -109,5 +124,7 @@ class LL {
         list.printList();
         list.deleteLast();
         list.printList();
+
+        System.out.println(list.getSize());
     }
 }
