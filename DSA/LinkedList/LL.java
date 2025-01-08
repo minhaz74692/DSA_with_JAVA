@@ -38,6 +38,37 @@ class LL {
         currentNode.next = newNode;
     }
 
+    // Delete: first, last
+    public void deleteFirst() {
+        if (head == null) {
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        head = head.next;
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node secondLastNode = head;
+        Node lastNode = head.next;
+
+        while (lastNode.next != null) {
+            secondLastNode = lastNode;
+            lastNode = lastNode.next;
+        }
+        secondLastNode.next = null;
+    }
+
     // print
     public void printList() {
         if (head == null) {
@@ -61,9 +92,19 @@ class LL {
         list.addLast("Linked List");
 
         list.printList();
-        
+
         list.addFirst("This");
-        
+
+        list.printList();
+
+        list.deleteFirst();
+        list.printList();
+
+        list.deleteLast();
+        list.printList();
+        list.deleteLast();
+        list.printList();
+        list.deleteLast();
         list.printList();
     }
 }
