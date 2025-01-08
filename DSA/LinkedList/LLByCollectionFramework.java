@@ -19,6 +19,10 @@ public class LLByCollectionFramework {
 
         System.out.println(list.size());
 
+        for(int i = 0; i<list.size(); i++){
+            System.out.println(list.get(i));
+        }
+
         printList(list);
 
         list.removeFirst();
