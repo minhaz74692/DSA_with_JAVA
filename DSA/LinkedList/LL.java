@@ -41,6 +41,7 @@ class LL {
     // Delete: first, last
     public void deleteFirst() {
         if (head == null) {
+            System.out.println("The List is Empty to delete");
             return;
         }
         if (head.next == null) {
@@ -52,6 +53,8 @@ class LL {
 
     public void deleteLast() {
         if (head == null) {
+
+            System.out.println("The List is Empty to delete");
             return;
         }
         if (head.next == null) {
@@ -63,8 +66,8 @@ class LL {
         Node lastNode = head.next;
 
         while (lastNode.next != null) {
-            secondLastNode = lastNode;
             lastNode = lastNode.next;
+            secondLastNode = secondLastNode.next;
         }
         secondLastNode.next = null;
     }
