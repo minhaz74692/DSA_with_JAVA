@@ -56,8 +56,14 @@ class LL {
         LL list = new LL();
         list.addFirst("a");
         list.addFirst("is");
+        list.printList();
+
         list.addLast("Linked List");
 
+        list.printList();
+        
+        list.addFirst("This");
+        
         list.printList();
     }
 }
