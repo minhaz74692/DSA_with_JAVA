@@ -99,6 +99,9 @@ class LL {
         System.out.println("Null");
     }
 
+    //Remove nth Node
+    
+
     public static void main(String[] args) {
         LL list = new LL();
         list.addFirst("a");

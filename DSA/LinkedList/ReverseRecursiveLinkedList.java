@@ -49,6 +49,8 @@ public class ReverseRecursiveLinkedList {
         System.out.println("Null");
     }
 
+    
+
     public Node reverseRecursive(Node head){
         if(head == null || head.next == null){
             return head;

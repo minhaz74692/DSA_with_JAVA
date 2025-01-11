@@ -34,6 +34,7 @@ public class LLByCollectionFramework {
         printList(list);
         list.removeLast();
         printList(list);
+        
 
         System.out.println(list.size());
     }
