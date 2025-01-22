@@ -62,12 +62,15 @@ public class CircularQueueAtArray {
         }
 
         public static void main(String args[]) {
-            Queue q = new Queue(4);
+            Queue q = new Queue(5);
 
             q.add(1);
             q.add(2);
             q.add(3);
             q.add(4);
+            q.add(5);
+            q.remove();
+            q.add(6);
 
             while (!q.isEmpty()) {
                 System.out.println(q.remove());
