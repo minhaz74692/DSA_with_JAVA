@@ -3,6 +3,7 @@ package DSA.Queue_DS;
 public class QueueAtLinkedList {
 
     static Node head;
+    static Node tail;
     static int size;
 
     QueueAtLinkedList() {
@@ -23,29 +24,23 @@ public class QueueAtLinkedList {
         return head == null;
     }
 
-    public static Node findTail() {
-        if (isEmpty()) {
-            return null;
-        }
-        Node tail = head;
-        while (tail.next != null) {
-            tail = tail.next;
-        }
-        return tail;
-    }
-
     public void add(int data) {
         Node newNode = new Node(data);
         if (isEmpty()) {
             head = newNode;
+            tail = newNode;
             return;
         }
-        Node tail = findTail();
         tail.next = newNode;
+        tail = newNode;
     }
 
     public void remove() {
         if (isEmpty()) {
+            return;
+        }
+        if (head.next == null) {
+            head = tail = null;
             return;
         }
         head = head.next;
@@ -62,6 +57,7 @@ public class QueueAtLinkedList {
     public void printList() {
         if (isEmpty()) {
             System.out.println("List is Empty");
+            return;
         }
         Node currNode = head;
         while (currNode.next != null) {
@@ -72,6 +68,15 @@ public class QueueAtLinkedList {
         System.out.print(currNode.data);
     }
 
+    public void printTail() {
+        if (tail == null) {
+            System.out.println("Tail is Null");
+            return;
+        }
+
+        System.out.println("Tail is: " + tail.data);
+    }
+
     public static void main(String args[]) {
         QueueAtLinkedList ll = new QueueAtLinkedList();
         ll.add(1);
@@ -79,10 +84,16 @@ public class QueueAtLinkedList {
         ll.add(3);
         ll.add(4);
         ll.add(5);
+
         ll.peek();
         ll.remove();
+        // ll.remove();
+        // ll.remove();
+        // ll.remove();
+        // ll.remove();
         ll.add(6);
         ll.peek();
+        ll.printTail();
         ll.printList();
     }
 }
