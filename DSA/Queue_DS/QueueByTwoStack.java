@@ -12,29 +12,23 @@ public class QueueByTwoStack {
         }
 
         static void add(int data) {
-            if (isEmpty()) {
-                s1.add(data);
-                return;
-            }
 
             while (!isEmpty()) {
-                s2.add(s1.peek());
-                s1.pop();
+                s2.push(s1.pop());
             }
-            s1.add(data);
+            s1.push(data);
+            
             while (!s2.isEmpty()) {
-                s1.add(s2.peek());
-                s2.pop();
+                s1.push(s2.pop());
             }
         }
 
         static int remove() {
             if (isEmpty()) {
+                System.out.println("Empty Queue");
                 return -1;
             }
-            int top = s1.peek();
-            s1.pop();
-            return top;
+            return s1.pop();
         }
 
         static int peek() {
@@ -45,7 +39,7 @@ public class QueueByTwoStack {
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         Queue q = new Queue();
         q.add(1);
         q.add(2);
