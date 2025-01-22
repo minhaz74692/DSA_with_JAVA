@@ -20,7 +20,7 @@ public class QueueAtLinkedList {
         }
     }
 
-    public static boolean isEmpty() {
+    public boolean isEmpty() {
         return head == null;
     }
 
@@ -46,12 +46,11 @@ public class QueueAtLinkedList {
         head = head.next;
     }
 
-    public Node peek() {
+    public int peek() {
         if (isEmpty()) {
-            return null;
+            return -1;
         }
-        System.out.println(head.data);
-        return head;
+        return head.data;
     }
 
     public void printList() {
@@ -85,15 +84,9 @@ public class QueueAtLinkedList {
         ll.add(4);
         ll.add(5);
 
-        ll.peek();
-        ll.remove();
-        // ll.remove();
-        // ll.remove();
-        // ll.remove();
-        // ll.remove();
-        ll.add(6);
-        ll.peek();
-        ll.printTail();
-        ll.printList();
+        while (!ll.isEmpty()) {
+            System.out.println(ll.peek());
+            ll.remove();
+        }
     }
 }
