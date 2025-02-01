@@ -95,6 +95,39 @@ class Problem143ReorderList {
         return firstNode;
     }
 
+    //LeetCode Problem: 61
+    public ListNode RotateList(ListNode head, int k){
+        ListNode result = head;
+        for(int i =0; i<k; i++){
+            // this.printList(head);
+            result = singleRotate(result);
+        }
+
+        this.printList(result);
+
+
+        return result;
+    }
+
+    public static ListNode singleRotate(ListNode head ){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode result = head;
+        ListNode first = head;
+        ListNode second = head.next;
+
+        while (second.next != null) {
+            first = first.next;
+            second = second.next;
+        }
+
+        first.next = second.next;
+        second.next = result;
+        result = second;
+        return result;
+    }
+
     public static void main(String args[]) {
         Problem143ReorderList list = new Problem143ReorderList();
         list.addFirst(5);
@@ -103,10 +136,12 @@ class Problem143ReorderList {
         list.addFirst(2);
         list.addFirst(1);
 
-        list.printList(list.head);
-        list.reOrder(list.head);
         // list.printList(list.head);
-
+        // list.reOrder(list.head);
+        list.printList(list.head);
+        
+        list.RotateList(list.head, 2);
+        // list.printList(list.head);
     }
 
 }
