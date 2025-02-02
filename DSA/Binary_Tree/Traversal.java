@@ -31,11 +31,10 @@ public class Traversal {
         }
     }
 
-
     // Pre-Order Traversal
     public static ArrayList<Integer> preOrderTraversal(Node root, ArrayList<Integer> nums) {
         if (root == null) {
-            System.out.print( "");
+            System.out.print("");
             return null;
         }
         System.out.print(root.data + " ");
@@ -51,7 +50,6 @@ public class Traversal {
             return list;
         }
 
-       
         inOrderHelper(node.left, list);
         System.out.print(node.data + " ");
         list.add(node.data);
@@ -71,5 +69,6 @@ public class Traversal {
 
         inOrderHelper(root, new ArrayList<>());
         // System.out.println(inOrderList);
+
     }
 }
