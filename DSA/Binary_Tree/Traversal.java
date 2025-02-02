@@ -30,6 +30,8 @@ public class Traversal {
 
     public static ArrayList<Integer> preOrderTraversal(Node root, ArrayList<Integer> nums){
         if(root == null){
+            System.out.print(-1+ " ");
+            nums.add(-1);
             return null;
         }
         System.out.print(root.data+ " ");
