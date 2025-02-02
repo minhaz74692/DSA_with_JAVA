@@ -6,7 +6,7 @@ import java.util.List;
 public class Problem141PreOrderTraversal {
 
     // Definition for a binary tree node.
-    public class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -26,7 +26,7 @@ public class Problem141PreOrderTraversal {
     }
 
     class Solution {
-        public List<Integer> preorderTraversal(TreeNode root) {
+        static List<Integer> preorderTraversal(TreeNode root) {
             List<Integer> list = new ArrayList<Integer>();
             list = preOrderHelper(root, list);
             return list;
@@ -41,5 +41,18 @@ public class Problem141PreOrderTraversal {
             preOrderHelper(node.right, list);
             return list;
         }
+
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(10);
+        list.add(30);
+
+        // Insert 20 at index 1
+        list.add(0, 20);
+
+        System.out.println(list); // Output: [10, 20, 30]
     }
 }
