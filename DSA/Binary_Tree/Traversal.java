@@ -1,7 +1,9 @@
 package DSA.Binary_Tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Traversal {
     static class Node {
@@ -31,7 +33,7 @@ public class Traversal {
         }
     }
 
-    // Pre-Order Traversal
+    // 1: Pre-Order Traversal
     public static ArrayList<Integer> preOrderTraversal(Node root, ArrayList<Integer> nums) {
         if (root == null) {
             System.out.print("");
@@ -44,18 +46,57 @@ public class Traversal {
         return nums;
     }
 
-    // In-Order Traversal
-    static ArrayList<Integer> inOrderHelper(Node node, ArrayList<Integer> list) {
+    // 2: In-Order Traversal
+    static ArrayList<Integer> inOrderTraversal(Node node, ArrayList<Integer> list) {
         if (node == null) {
             return list;
         }
-        
 
-        inOrderHelper(node.left, list);
+        inOrderTraversal(node.left, list);
         System.out.print(node.data + " ");
         list.add(node.data);
-        inOrderHelper(node.right, list);
+        inOrderTraversal(node.right, list);
         return list;
+    }
+
+    // 3: Post-Order Traversal
+    static ArrayList<Integer> postOrderTraversal(Node node, ArrayList<Integer> list) {
+        if (node == null) {
+            return list;
+        }
+
+        inOrderTraversal(node.left, list);
+        inOrderTraversal(node.right, list);
+        System.out.print(node.data + " ");
+        list.add(node.data);
+        return list;
+    }
+
+    // 4: Level Order Traversal
+    public static void levelOrderTraversal(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+
+        while (!q.isEmpty()) {
+            Node tempNode = q.remove();
+            if (tempNode == null) {
+                System.out.println();
+                if (q.isEmpty()) {
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {
+                System.out.print(tempNode.data + " ");
+                if (tempNode.left != null)
+                    q.add(tempNode.left);
+
+                if (tempNode.right != null)
+                    q.add(tempNode.right);
+            }
+
+        }
     }
 
     public static void main(String[] args) {
@@ -64,12 +105,18 @@ public class Traversal {
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nums);
         System.out.println(root.data);
-        ArrayList<Integer> nums2 = preOrderTraversal(root, new ArrayList<Integer>());
-        System.out.println("");
-        // System.out.println(nums2);
 
-        inOrderHelper(root, new ArrayList<>());
-        // System.out.println(inOrderList);
+        System.out.println("\n\nPre Order Traversal: ");
+        preOrderTraversal(root, new ArrayList<Integer>());
+
+        System.out.println("\n\nIn Order Traversal:");
+        inOrderTraversal(root, new ArrayList<>());
+
+        System.out.println("\n\nPost Order Traversal:");
+        postOrderTraversal(root, new ArrayList<>());
+
+        System.out.println("\n\nLevel Order Traversal: ");
+        levelOrderTraversal(root);
 
     }
 }
