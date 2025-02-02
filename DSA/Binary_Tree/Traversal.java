@@ -49,6 +49,7 @@ public class Traversal {
         if (node == null) {
             return list;
         }
+        
 
         inOrderHelper(node.left, list);
         System.out.print(node.data + " ");
