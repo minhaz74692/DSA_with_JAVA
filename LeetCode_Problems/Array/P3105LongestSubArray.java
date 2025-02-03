@@ -1,7 +1,6 @@
 package LeetCode_Problems.Array;
 
 public class P3105LongestSubArray {
-    a
 class Solution {
     public int longestMonotonicSubarray(int[] nums) {
         int incLength = 1;
